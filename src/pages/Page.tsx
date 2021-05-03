@@ -14,6 +14,7 @@ import Home from "./Home";
 import Setting from "./Setting";
 import Inbox from "./Inbox";
 import InboxDetail from "./InboxDetail";
+import DataPoints from "./DataPoints";
 import Stats from "./Stats";
 
 const Pages: React.FC = () => {
@@ -30,6 +31,8 @@ const Pages: React.FC = () => {
       return <Inbox />;
     case "Stats":
       return <Stats />;
+    case "DataPoints":
+      return <DataPoints />;
     default:
       return <div>Page Not Found</div>;
   }

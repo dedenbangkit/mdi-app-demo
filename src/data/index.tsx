@@ -16,6 +16,7 @@ const dt = (dateType: string) => {
       return moment(faker.date.future(1)).format("L");
   }
 };
+const datatype = faker.datatype;
 const commerce = faker.commerce;
 const address = faker.address;
 const lorem = faker.lorem;
@@ -26,6 +27,7 @@ const pic = faker.image;
 const projectsData = {
   projects: [
     {
+      id: 1,
       name:
         "Toward Sustainable Clusters in Agribusiness through Learning in Entrepreneurship",
       assigned: "15-04-2021",
@@ -36,6 +38,7 @@ const projectsData = {
       value: 200000,
     },
     {
+      id: 2,
       name: "Supporting Agricultural Productivity in Mali",
       assigned: "15-03-2021",
       due: "13-07-2021",
@@ -45,6 +48,7 @@ const projectsData = {
       value: 500000,
     },
     {
+      id: 3,
       name: "Biogas plants – Biodigesters",
       assigned: "15-03-2021",
       due: "13-07-2021",
@@ -56,6 +60,7 @@ const projectsData = {
   ],
   history: [
     {
+      id: 4,
       name: "Incubating Inclusive Agribusiness",
       assigned: "08-12-2020",
       due: "15-01-2021",
@@ -63,6 +68,7 @@ const projectsData = {
       value: 500000,
     },
     {
+      id: 5,
       name: "Access to Safe Water and Sanitation",
       assigned: "08-12-2020",
       due: "15-01-2021",
@@ -70,6 +76,7 @@ const projectsData = {
       value: 500000,
     },
     {
+      id: 6,
       name: "Wash in Schools",
       assigned: "08-12-2020",
       due: "15-01-2021",
@@ -77,6 +84,7 @@ const projectsData = {
       value: 500000,
     },
     {
+      id: 7,
       name: "Wash in Schools",
       assigned: "08-12-2020",
       due: "15-01-2021",
@@ -146,6 +154,7 @@ export {
   company,
   finance,
   pic,
+  datatype,
   surveyList,
   projectsData,
   inboxData,

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   IonContent,
   IonIcon,
@@ -47,19 +48,33 @@ const headerInfo = [
 
 const Contents = ({ segment }): any => {
   const [present] = useIonActionSheet();
-  const handleCardClick = () => {
+  const history = useHistory();
+  const handleCardClick = (e, x) => {
     if (segment === "projects") {
       present({
+        header: "Action",
         buttons: [
-          { text: "Start Survey", icon: clipboardOutline },
-          { text: "View Data", icon: barChartOutline },
+          {
+            text: "Start Survey",
+            icon: clipboardOutline,
+            handler: () => {
+              console.log("Survey Clicked");
+            },
+          },
+          {
+            text: "View Data",
+            icon: barChartOutline,
+            handler: () => {
+              history.push(`/page/DataPoints/${x.id}`);
+            },
+          },
         ],
       });
     }
     return;
   };
   return projectsData[segment].map((x, i) => (
-    <IonCard key={i} onClick={handleCardClick}>
+    <IonCard key={x.id} onClick={(e) => handleCardClick(e, x)}>
       <IonCardHeader>
         <IonCardSubtitle>{x.name}</IonCardSubtitle>
       </IonCardHeader>
