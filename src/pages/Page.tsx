@@ -6,41 +6,45 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonBackButton,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Page.css";
 import Home from "./Home";
 import Setting from "./Setting";
 import Inbox from "./Inbox";
+import InboxDetail from "./InboxDetail";
 import Stats from "./Stats";
 
 const Pages: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
-  switch (name) {
+  const params = useParams<{ name: string; id: string }>();
+  switch (params.name) {
     case "Home":
       return <Home />;
     case "Settings":
       return <Setting />;
     case "Inbox":
+      if (params.id) {
+        return <InboxDetail id={params.id} />;
+      }
       return <Inbox />;
     case "Stats":
       return <Stats />;
     default:
-      return <ExploreContainer name={name} />;
+      return <div>Page Not Found</div>;
   }
 };
 
 const Page: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+  const { name, id } = useParams<{ name: string; id: string }>();
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {id ? <IonBackButton defaultHref="" /> : <IonMenuButton />}
+            <IonTitle>{name || "Back"}</IonTitle>
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
         </IonToolbar>
       </IonHeader>
 

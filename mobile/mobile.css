@@ -1,14 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #fffaf6;
+  background-color: #585858;
 }
 /*Basic Phone styling*/
 
 .phone {
-  border: 40px solid #ddd;
+  border: 40px solid #000;
   border-width: 55px 7px;
-  border-radius: 40px;
+  border-radius: 15px;
   margin: 50px auto;
   overflow: hidden;
   transition: all 0.5s ease;
@@ -22,42 +22,13 @@ body {
 /*Different Perspectives*/
 
 .phone.view_1 {
-  transform: rotateX(50deg) rotateY(0deg) rotateZ(-50deg);
-  box-shadow: -3px 3px 0 #bbb, -6px 6px 0 #bbb, -9px 9px 0 #bbb,
-    -12px 12px 0 #bbb, -14px 10px 20px #666;
-}
-
-.phone.view_2 {
-  transform: rotateX(0deg) rotateY(-60deg) rotateZ(0deg);
-  box-shadow: 5px 1px 0 #bbb, 9px 2px 0 #bbb, 12px 3px 0 #bbb, 15px 4px 0 #bbb,
-    0 7px 20px #999;
-}
-
-.phone.view_3 {
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  box-shadow: 0px 3px 0 #bbb, 0px 4px 0 #bbb, 0px 5px 0 #bbb, 0px 7px 0 #bbb,
-    0px 10px 20px #666;
+  box-shadow: 0px 5px 0 #272727, 0px 10px 20px #000;
+  width: 400px;
+  height: 720px;
 }
+
 /*Controls*/
-
-#controls {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 0.9em;
-  color: #333;
-}
-
-#controls div {
-  margin: 10px;
-}
-
-#controls div label {
-  width: 120px;
-  display: block;
-  float: left;
-}
-
 #views {
   position: absolute;
   top: 20px;

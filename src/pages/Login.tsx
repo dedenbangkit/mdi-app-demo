@@ -15,8 +15,8 @@ import "./Login.css";
 const logo = require("../image/mdi-logo.png");
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@akvo.org");
+  const [password, setPassword] = useState("testing");
   const [redirect, setRedirect] = useState(false);
   const handleLogin = () => {
     setRedirect(true);

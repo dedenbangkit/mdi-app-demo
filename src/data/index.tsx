@@ -1,6 +1,7 @@
 import * as faker from "faker";
 import moment from "moment";
 import { surveyList } from "./static";
+import { star, cash, documentText } from "ionicons/icons";
 
 const newArray = (num = 40) => {
   return Array.from({ length: num }, () => Math.floor(Math.random() * num));
@@ -22,7 +23,7 @@ const company = faker.company;
 const finance = faker.finance;
 const pic = faker.image;
 
-const projects = {
+const projectsData = {
   projects: [
     {
       name:
@@ -85,6 +86,56 @@ const projects = {
   ],
 };
 
+const inboxData = [
+  {
+    id: 1,
+    sender: "Peter van der Linde",
+    org: "Akvo",
+    avatar: "https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg",
+    inboxType: "projectInvitation",
+    read: false,
+  },
+  {
+    id: 2,
+    sender: "Abdoulaye Semdé",
+    org: "Akvo",
+    avatar:
+      "https://akvo.org/wp-content/uploads/2015/07/Abdoulaye-Semde-240x135.jpg",
+    inboxType: "projectInvitation",
+    read: false,
+  },
+  {
+    id: 3,
+    sender: "Peter van der Linde",
+    org: "Akvo",
+    avatar: "https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg",
+    inboxType: "financeUpdate",
+    read: true,
+  },
+  {
+    id: 4,
+    sender: "Peter van der Linde",
+    org: "Akvo",
+    avatar: "https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg",
+    inboxType: "projectAssignment",
+    read: true,
+  },
+];
+
+const inboxTypes = {
+  projectInvitation: {
+    icon: star,
+    label: "Project Invitation",
+    color: "primary",
+  },
+  financeUpdate: { icon: cash, label: "Finance Update", color: "success" },
+  projectAssignment: {
+    icon: documentText,
+    label: "Project Assignment",
+    color: "danger",
+  },
+};
+
 export {
   name,
   internet,
@@ -96,7 +147,9 @@ export {
   finance,
   pic,
   surveyList,
-  projects,
+  projectsData,
+  inboxData,
+  inboxTypes,
 };
 
 export default newArray;

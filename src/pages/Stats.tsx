@@ -3,8 +3,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonRow,
-  IonCol,
   IonTitle,
   IonToolbar,
   IonCard,
@@ -56,30 +54,24 @@ export const Stats: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonRow>
-          <IonCol>
-            <IonCard>
-              <IonCardHeader>
-                <IonCardTitle>Submission</IonCardTitle>
-                <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <Doughnut data={doughnutData} type="DOESNOTMATTER" />
-              </IonCardContent>
-            </IonCard>
-          </IonCol>
-          <IonCol>
-            <IonCard>
-              <IonCardHeader>
-                <IonCardTitle>Submission</IonCardTitle>
-                <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <Line data={lineData} type="DOESNOTMATTER" />
-              </IonCardContent>
-            </IonCard>
-          </IonCol>
-        </IonRow>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Submission</IonCardTitle>
+            <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <Doughnut data={doughnutData} type="DOESNOTMATTER" />
+          </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Submission</IonCardTitle>
+            <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <Line data={lineData} type="DOESNOTMATTER" />
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );

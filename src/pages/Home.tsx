@@ -28,7 +28,7 @@ import {
   clipboardOutline,
   barChartOutline,
 } from "ionicons/icons";
-import { projects } from "../data";
+import { projectsData } from "../data";
 
 const headerInfo = [
   {
@@ -58,7 +58,7 @@ const Contents = ({ segment }): any => {
     }
     return;
   };
-  return projects[segment].map((x, i) => (
+  return projectsData[segment].map((x, i) => (
     <IonCard key={i} onClick={handleCardClick}>
       <IonCardHeader>
         <IonCardSubtitle>{x.name}</IonCardSubtitle>

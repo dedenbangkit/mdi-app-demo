@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -14,9 +13,11 @@ import {
   IonItemDivider,
 } from "@ionic/react";
 import "./Inbox.css";
-import { star, cash, documentText } from "ionicons/icons";
+import { inboxData, inboxTypes } from "../data";
 
-export const Inbox: React.FC = () => {
+const InboxList = () => {
+  const read = inboxData.filter((x) => x.read);
+  const unread = inboxData.filter((x) => !x.read);
   return (
     <IonPage>
       <IonHeader>
@@ -29,79 +30,58 @@ export const Inbox: React.FC = () => {
           <IonItemDivider color="primary">
             <IonLabel>Unread Message</IonLabel>
           </IonItemDivider>
-          <IonItem className="unread">
-            <IonAvatar slot="start">
-              <img
-                src="https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg"
-                alt="avatar"
-              />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Peter van der Linde</h2>
-              <p>Akvo</p>
-              <IonBadge color="primary">
-                <IonIcon icon={star} />
-                Project Invitation
-              </IonBadge>
-            </IonLabel>
-          </IonItem>
-          <IonItem className="unread">
-            <IonAvatar slot="start">
-              <img
-                src="https://akvo.org/wp-content/uploads/2015/07/Abdoulaye-Semde-240x135.jpg"
-                alt="avatar"
-              />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Abdoulaye Semdé</h2>
-              <p>Akvo</p>
-              <IonBadge color="primary">
-                <IonIcon icon={star} />
-                Project Invitation
-              </IonBadge>
-            </IonLabel>
-          </IonItem>
+          {unread.map((x) => (
+            <IonItem
+              key={x.id}
+              className="unread"
+              routerLink={`/page/Inbox/${x.id}`}
+              routerDirection={"forward"}
+            >
+              <IonAvatar slot="start">
+                <img src={x.avatar} alt="avatar" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>{x.sender}</h2>
+                <p>{x.org}</p>
+                <IonBadge color={inboxTypes[x.inboxType].color}>
+                  <IonIcon icon={inboxTypes[x.inboxType].icon} />
+                  {inboxTypes[x.inboxType].label}
+                </IonBadge>
+              </IonLabel>
+            </IonItem>
+          ))}
         </IonItemGroup>
         <IonItemGroup>
           <IonItemDivider color="dark">
-            <IonLabel>All Message</IonLabel>
+            <IonLabel>Read Message</IonLabel>
           </IonItemDivider>
-          <IonItem>
-            <IonAvatar slot="start">
-              <img
-                src="https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg"
-                alt="avatar"
-              />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Peter van der Linde</h2>
-              <p>Akvo</p>
-              <IonBadge color="danger">
-                <IonIcon icon={documentText} />
-                Project Assignment
-              </IonBadge>
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonAvatar slot="start">
-              <img
-                src="https://akvo.org/wp-content/uploads/2013/10/pvdl_240.jpg"
-                alt="avatar"
-              />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Peter van der Linde</h2>
-              <p>Akvo</p>
-              <IonBadge color="success">
-                <IonIcon icon={cash} />
-                Finance Update
-              </IonBadge>
-            </IonLabel>
-          </IonItem>
+          {read.map((x) => (
+            <IonItem
+              key={x.id}
+              routerLink={`/page/Inbox/${x.id}`}
+              routerDirection={"forward"}
+            >
+              <IonAvatar slot="start">
+                <img src={x.avatar} alt="avatar" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>{x.sender}</h2>
+                <p>{x.org}</p>
+                <IonBadge color={inboxTypes[x.inboxType].color}>
+                  <IonIcon icon={inboxTypes[x.inboxType].icon} />
+                  {inboxTypes[x.inboxType].label}
+                </IonBadge>
+              </IonLabel>
+            </IonItem>
+          ))}
         </IonItemGroup>
       </IonContent>
     </IonPage>
   );
+};
+
+export const Inbox: React.FC = () => {
+  return <InboxList />;
 };
 
 export default Inbox;
