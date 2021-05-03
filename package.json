@@ -42,7 +42,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "mview": "cp ./mobile/* ./build/",
+    "deploy": "cp ./mobile/* ./build/ | ./sync.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
