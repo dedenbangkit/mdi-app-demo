@@ -1,0 +1,37 @@
+.login {
+  margin: 3rem 1rem;
+  padding: 1rem;
+}
+#logo {
+  font-size: 2rem;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 0px;
+  background: #405da8;
+  color: #fff;
+  padding: 0 0px 0px 10px;
+  border-radius: 10px;
+}
+#logo small {
+  font-size: 2rem;
+  font-weight: 200;
+  text-transform: uppercase;
+  background: #29b199;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+div.container-logo {
+  min-width: 100%;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+img.img-logo {
+  width: 140px;
+  margin: 2rem auto 1rem auto;
+}
