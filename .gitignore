@@ -24,8 +24,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Deploy Script
-sync.sh
-
 # Optional eslint cache
 .eslintcache
