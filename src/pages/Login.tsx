@@ -26,7 +26,7 @@ const Login: React.FC = () => {
   }
   return (
     <IonPage>
-      <IonContent>
+      <IonContent fullscreen>
         <IonRow className="login">
           <div className="container-logo">
             <img src={logo.default} alt="mdi-logo" className="img-logo" />

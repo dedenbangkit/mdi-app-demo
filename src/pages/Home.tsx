@@ -95,16 +95,14 @@ const Contents = ({ segment }): any => {
         )}
       </IonCardContent>
       {segment === "projects" && (
-        <>
-          <IonItem>
-            <IonLabel>Progress</IonLabel>
-            <IonBadge color="danger">
-              {x.completed} / {x.target}
-            </IonBadge>
-          </IonItem>
-          <IonProgressBar color="danger" value={x.completed / x.target} />
-        </>
+        <IonItem>
+          <IonLabel>Progress</IonLabel>
+          <IonBadge color="danger">
+            {x.completed} / {x.target}
+          </IonBadge>
+        </IonItem>
       )}
+      <IonProgressBar color="danger" value={x.completed / x.target} />
     </IonCard>
   ));
 };
@@ -129,7 +127,7 @@ export const Home: React.FC = () => {
           ))}
         </IonSegment>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <Contents segment={segment} />
       </IonContent>
     </IonPage>

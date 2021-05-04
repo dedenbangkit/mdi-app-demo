@@ -15,16 +15,16 @@ import {
   IonInput,
 } from "@ionic/react";
 
-export const Setting: React.FC = () => {
+export const Account: React.FC = () => {
   const [accountType, setAccountType] = useState("orange");
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Setting</IonTitle>
+          <IonTitle>Account</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <IonItemGroup>
           <IonItem>
             <IonAvatar slot="start">
@@ -40,10 +40,10 @@ export const Setting: React.FC = () => {
             </IonLabel>
           </IonItem>
         </IonItemGroup>
+        <IonItemDivider color="light">
+          <IonLabel>Finance</IonLabel>
+        </IonItemDivider>
         <IonItemGroup>
-          <IonItemDivider color="dark">
-            <IonLabel>Finance</IonLabel>
-          </IonItemDivider>
           <IonItem>
             <IonLabel position="stacked">Account Type</IonLabel>
             <IonSelect
@@ -62,11 +62,23 @@ export const Setting: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Address</IonLabel>
-            <IonInput placeholder="Address Line 1"></IonInput>
-            <IonInput placeholder="Address Line 2"></IonInput>
-            <IonInput placeholder="City"></IonInput>
-            <IonInput placeholder="State"></IonInput>
-            <IonInput placeholder="Zip Code"></IonInput>
+            <IonInput
+              placeholder="Address Line 1"
+              value="Rue 17 -Porte 305, Badalabougou Est BP 2220"
+            ></IonInput>
+            <IonLabel position="stacked">City</IonLabel>
+            <IonInput placeholder="City" value="Bamako"></IonInput>
+            <IonLabel position="stacked">State</IonLabel>
+            <IonInput
+              placeholder="State"
+              value="Bamako Capital District"
+            ></IonInput>
+            <IonLabel position="stacked">Zip Code</IonLabel>
+            <IonInput
+              type="number"
+              placeholder="Zip Code"
+              value={91095}
+            ></IonInput>
           </IonItem>
         </IonItemGroup>
       </IonContent>
@@ -74,4 +86,4 @@ export const Setting: React.FC = () => {
   );
 };
 
-export default Setting;
+export default Account;

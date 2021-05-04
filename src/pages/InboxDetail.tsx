@@ -1,13 +1,12 @@
 import React from "react";
 import {
-  IonPage,
   IonContent,
   IonItem,
   IonAvatar,
   IonLabel,
   IonChip,
-  IonItemDivider,
   IonButton,
+  IonFooter,
 } from "@ionic/react";
 import { inboxData, inboxTypes, lorem } from "../data";
 
@@ -18,7 +17,7 @@ interface InboxDetailProps {
 export const InboxDetail: React.FC<InboxDetailProps> = ({ id }) => {
   const data = inboxData.find((x) => x.id.toString() === id);
   return (
-    <IonContent>
+    <IonContent fullscreen>
       <IonItem>
         <IonLabel>
           <h2>
@@ -44,14 +43,16 @@ export const InboxDetail: React.FC<InboxDetailProps> = ({ id }) => {
       <IonItem>
         <p>{lorem.paragraphs()}</p>
       </IonItem>
-      {data?.inboxType === "projectInvitation" && (
-        <IonButton expand="full">Quick Apply</IonButton>
-      )}
-      {data?.inboxType === "projectAssignment" && (
-        <IonButton expand="full" disabled>
-          Start Survey
-        </IonButton>
-      )}
+      <IonFooter className="ion-no-border">
+        {data?.inboxType === "projectInvitation" && (
+          <IonButton expand="full">Quick Apply</IonButton>
+        )}
+        {data?.inboxType === "projectAssignment" && (
+          <IonButton expand="full" disabled>
+            Start Survey
+          </IonButton>
+        )}
+      </IonFooter>
     </IonContent>
   );
 };

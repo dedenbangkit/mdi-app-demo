@@ -20,8 +20,8 @@ import {
   mailUnreadSharp,
   personCircleOutline,
   personCircleSharp,
-  cogOutline,
-  cogSharp,
+  clipboardOutline,
+  clipboardSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -46,16 +46,16 @@ const appPages: AppPage[] = [
     mdIcon: mailUnreadSharp,
   },
   {
+    title: "Survey",
+    url: "/page/Survey",
+    iosIcon: clipboardOutline,
+    mdIcon: clipboardSharp,
+  },
+  {
     title: "Stats",
     url: "/page/Stats",
     iosIcon: statsChartOutline,
     mdIcon: statsChartSharp,
-  },
-  {
-    title: "Settings",
-    url: "/page/Settings",
-    iosIcon: cogOutline,
-    mdIcon: cogSharp,
   },
   {
     title: "Account",

@@ -1,4 +1,6 @@
 import {
+  IonRow,
+  IonCol,
   IonButtons,
   IonContent,
   IonHeader,
@@ -11,19 +13,32 @@ import {
 import { useParams } from "react-router";
 import "./Page.css";
 import Home from "./Home";
-import Setting from "./Setting";
+import Account from "./Account";
 import Inbox from "./Inbox";
 import InboxDetail from "./InboxDetail";
 import DataPoints from "./DataPoints";
 import Stats from "./Stats";
+import Survey from "./Survey";
+
+const NotFound: React.FC = () => {
+  return (
+    <IonContent fullscreen>
+      <IonRow>
+        <IonCol style={{ textAlign: "center" }}>
+          <h1>Under Development</h1>
+        </IonCol>
+      </IonRow>
+    </IonContent>
+  );
+};
 
 const Pages: React.FC = () => {
   const params = useParams<{ name: string; id: string }>();
   switch (params.name) {
     case "Home":
       return <Home />;
-    case "Settings":
-      return <Setting />;
+    case "Account":
+      return <Account />;
     case "Inbox":
       if (params.id) {
         return <InboxDetail id={params.id} />;
@@ -31,10 +46,15 @@ const Pages: React.FC = () => {
       return <Inbox />;
     case "Stats":
       return <Stats />;
+    case "Survey":
+      return <Survey />;
     case "DataPoints":
-      return <DataPoints />;
+      if (params.id) {
+        return <DataPoints />;
+      }
+      return <NotFound />;
     default:
-      return <div>Page Not Found</div>;
+      return <NotFound />;
   }
 };
 
@@ -46,8 +66,8 @@ const Page: React.FC = () => {
         <IonToolbar>
           <IonButtons slot="start">
             {id ? <IonBackButton defaultHref="" /> : <IonMenuButton />}
-            <IonTitle>{name || "Back"}</IonTitle>
           </IonButtons>
+          <IonTitle>{name}</IonTitle>
         </IonToolbar>
       </IonHeader>
 

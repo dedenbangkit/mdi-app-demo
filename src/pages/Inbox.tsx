@@ -9,6 +9,7 @@ import {
   IonLabel,
   IonBadge,
   IonIcon,
+  IonList,
   IonItemGroup,
   IonItemDivider,
 } from "@ionic/react";
@@ -25,55 +26,59 @@ const InboxList = () => {
           <IonTitle>Inbox</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
+        <IonItemDivider color="primary">
+          <IonLabel>Unread Message</IonLabel>
+        </IonItemDivider>
         <IonItemGroup>
-          <IonItemDivider color="primary">
-            <IonLabel>Unread Message</IonLabel>
-          </IonItemDivider>
-          {unread.map((x) => (
-            <IonItem
-              key={x.id}
-              className="unread"
-              routerLink={`/page/Inbox/${x.id}`}
-              routerDirection={"forward"}
-            >
-              <IonAvatar slot="start">
-                <img src={x.avatar} alt="avatar" />
-              </IonAvatar>
-              <IonLabel>
-                <h2>{x.sender}</h2>
-                <p>{x.org}</p>
-                <IonBadge color={inboxTypes[x.inboxType].color}>
-                  <IonIcon icon={inboxTypes[x.inboxType].icon} />
-                  {inboxTypes[x.inboxType].label}
-                </IonBadge>
-              </IonLabel>
-            </IonItem>
-          ))}
+          <IonList>
+            {unread.map((x) => (
+              <IonItem
+                key={x.id}
+                className="unread"
+                routerLink={`/page/Inbox/${x.id}`}
+                routerDirection={"forward"}
+              >
+                <IonAvatar slot="start">
+                  <img src={x.avatar} alt="avatar" />
+                </IonAvatar>
+                <IonLabel>
+                  <h2>{x.sender}</h2>
+                  <p>{x.org}</p>
+                  <IonBadge color={inboxTypes[x.inboxType].color}>
+                    <IonIcon icon={inboxTypes[x.inboxType].icon} />
+                    {inboxTypes[x.inboxType].label}
+                  </IonBadge>
+                </IonLabel>
+              </IonItem>
+            ))}
+          </IonList>
         </IonItemGroup>
+        <IonItemDivider color="light">
+          <IonLabel>Read Message</IonLabel>
+        </IonItemDivider>
         <IonItemGroup>
-          <IonItemDivider color="dark">
-            <IonLabel>Read Message</IonLabel>
-          </IonItemDivider>
-          {read.map((x) => (
-            <IonItem
-              key={x.id}
-              routerLink={`/page/Inbox/${x.id}`}
-              routerDirection={"forward"}
-            >
-              <IonAvatar slot="start">
-                <img src={x.avatar} alt="avatar" />
-              </IonAvatar>
-              <IonLabel>
-                <h2>{x.sender}</h2>
-                <p>{x.org}</p>
-                <IonBadge color={inboxTypes[x.inboxType].color}>
-                  <IonIcon icon={inboxTypes[x.inboxType].icon} />
-                  {inboxTypes[x.inboxType].label}
-                </IonBadge>
-              </IonLabel>
-            </IonItem>
-          ))}
+          <IonList>
+            {read.map((x) => (
+              <IonItem
+                key={x.id}
+                routerLink={`/page/Inbox/${x.id}`}
+                routerDirection={"forward"}
+              >
+                <IonAvatar slot="start">
+                  <img src={x.avatar} alt="avatar" />
+                </IonAvatar>
+                <IonLabel>
+                  <h2>{x.sender}</h2>
+                  <p>{x.org}</p>
+                  <IonBadge color={inboxTypes[x.inboxType].color}>
+                    <IonIcon icon={inboxTypes[x.inboxType].icon} />
+                    {inboxTypes[x.inboxType].label}
+                  </IonBadge>
+                </IonLabel>
+              </IonItem>
+            ))}
+          </IonList>
         </IonItemGroup>
       </IonContent>
     </IonPage>

@@ -32,13 +32,13 @@ const lineData = {
   datasets: [
     {
       label: "ID: 76832x",
-      data: [4, 3, 2, 5, 6],
+      data: [400, 300, 200, 500, 600],
       borderColor: "#404da8",
       backgroundColor: "#404da8",
     },
     {
       label: "ID: 92834c",
-      data: [2, 3, 7, 5, 6],
+      data: [200, 300, 0, 100, 50],
       borderColor: "#29b199",
       backgroundColor: "#29b199",
     },
@@ -53,7 +53,7 @@ export const Stats: React.FC = () => {
           <IonTitle>Setting</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>Submission</IonCardTitle>
@@ -65,8 +65,8 @@ export const Stats: React.FC = () => {
         </IonCard>
         <IonCard>
           <IonCardHeader>
-            <IonCardTitle>Submission</IonCardTitle>
-            <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
+            <IonCardTitle>Finance</IonCardTitle>
+            <IonCardSubtitle>Projects Income</IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
             <Line data={lineData} type="DOESNOTMATTER" />
