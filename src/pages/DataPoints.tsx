@@ -16,13 +16,13 @@ import {
   IonBadge,
   IonIcon,
   IonItemGroup,
-  IonItemDivider,
   IonProgressBar,
   IonSearchbar,
 } from "@ionic/react";
 import { location, calendar, checkmarkCircle } from "ionicons/icons";
 import "./Inbox.css";
 import newArray, { datatype, name, projectsData, dt } from "../data";
+import { dateUtil } from "../data/utils";
 
 export const DataPoints: React.FC = () => {
   const [searchText, setSearchText] = useState("");
@@ -46,7 +46,9 @@ export const DataPoints: React.FC = () => {
               </IonChip>
               <IonChip color="dark">
                 <IonIcon icon={calendar} />
-                <IonLabel>{current?.due}</IonLabel>
+                <IonLabel>
+                  {dateUtil.format(current?.due || "01-01-1988", "DD-MM-YYYY")}
+                </IonLabel>
               </IonChip>
             </IonCardContent>
             <IonItem>

@@ -22,6 +22,8 @@ import {
   personCircleSharp,
   clipboardOutline,
   clipboardSharp,
+  idCard,
+  idCardSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -38,6 +40,12 @@ const appPages: AppPage[] = [
     url: "/page/Home",
     iosIcon: homeOutline,
     mdIcon: homeSharp,
+  },
+  {
+    title: "Invitation",
+    url: "/page/Invitation",
+    iosIcon: idCard,
+    mdIcon: idCardSharp,
   },
   {
     title: "Inbox",
@@ -71,12 +79,12 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
+        <IonListHeader>
+          <h1 id="logo-menu">
+            MDI<small>Platform</small>
+          </h1>
+        </IonListHeader>
         <IonList id="inbox-list">
-          <IonListHeader>
-            <h1 id="logo-menu">
-              MDI<small>Platform</small>
-            </h1>
-          </IonListHeader>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -96,7 +104,12 @@ const Menu: React.FC = () => {
                   />
                   <IonLabel>{appPage.title}</IonLabel>
                   {appPage.title === "Inbox" && (
-                    <IonBadge color="danger">2</IonBadge>
+                    <IonBadge
+                      color="danger"
+                      style={{ borderRadius: 20, width: 20 }}
+                    >
+                      2
+                    </IonBadge>
                   )}
                 </IonItem>
               </IonMenuToggle>

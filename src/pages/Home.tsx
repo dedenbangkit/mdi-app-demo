@@ -23,20 +23,21 @@ import {
 import {
   location,
   fileTrayFull,
-  briefcaseOutline,
+  briefcase,
   calendar,
   cash,
   clipboardOutline,
   barChartOutline,
 } from "ionicons/icons";
 import { projectsData } from "../data";
+import { dateUtil } from "../data/utils";
 
 const headerInfo = [
   {
     value: "projects",
     label: "Projects",
     color: "secondary",
-    icon: briefcaseOutline,
+    icon: briefcase,
   },
   {
     value: "history",
@@ -85,7 +86,7 @@ const Contents = ({ segment }): any => {
         </IonChip>
         <IonChip color="dark">
           <IonIcon icon={calendar} />
-          <IonLabel>{x.due}</IonLabel>
+          <IonLabel>{dateUtil.format(x.due, "DD-MM-YYYY")}</IonLabel>
         </IonChip>
         {segment === "history" && (
           <IonChip color="dark">
@@ -95,14 +96,16 @@ const Contents = ({ segment }): any => {
         )}
       </IonCardContent>
       {segment === "projects" && (
-        <IonItem>
-          <IonLabel>Progress</IonLabel>
-          <IonBadge color="danger">
-            {x.completed} / {x.target}
-          </IonBadge>
-        </IonItem>
+        <>
+          <IonItem>
+            <IonLabel>Progress</IonLabel>
+            <IonBadge color="danger">
+              {x.completed} / {x.target}
+            </IonBadge>
+          </IonItem>
+          <IonProgressBar color="danger" value={x.completed / x.target} />
+        </>
       )}
-      <IonProgressBar color="danger" value={x.completed / x.target} />
     </IonCard>
   ));
 };

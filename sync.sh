@@ -6,8 +6,6 @@ rsync \
     --archive \
     --compress \
     --progress \
-    --exclude=ci \
-    --exclude=node_modules \
     ./build/ siteground:/home/customer/www/$DOMAIN/public_html/
 
 echo "Fixing permissions..."

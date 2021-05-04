@@ -92,6 +92,7 @@ const projectsData = {
       value: 500000,
     },
   ],
+  stats: [],
 };
 
 const inboxData = [

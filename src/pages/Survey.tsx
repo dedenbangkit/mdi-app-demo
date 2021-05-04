@@ -9,9 +9,6 @@ import {
   IonToolbar,
   IonChip,
   IonCard,
-  IonCardHeader,
-  IonRow,
-  IonCol,
   IonCardSubtitle,
   IonCardContent,
   IonProgressBar,
@@ -27,6 +24,7 @@ import {
   barChartOutline,
 } from "ionicons/icons";
 import { projectsData } from "../data";
+import { dateUtil } from "../data/utils";
 
 export const Home: React.FC = () => {
   const [present] = useIonActionSheet();
@@ -71,7 +69,7 @@ export const Home: React.FC = () => {
               </IonChip>
               <IonChip color="dark">
                 <IonIcon icon={calendar} size="normal" />
-                <IonLabel>{x.due}</IonLabel>
+                <IonLabel>{dateUtil.format(x.due, "DD-MM-YYYY")}</IonLabel>
               </IonChip>
             </IonCardContent>
             <IonItem>

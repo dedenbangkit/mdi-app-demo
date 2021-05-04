@@ -19,6 +19,7 @@ import InboxDetail from "./InboxDetail";
 import DataPoints from "./DataPoints";
 import Stats from "./Stats";
 import Survey from "./Survey";
+import Invitation from "./Invitation";
 
 const NotFound: React.FC = () => {
   return (
@@ -48,6 +49,8 @@ const Pages: React.FC = () => {
       return <Stats />;
     case "Survey":
       return <Survey />;
+    case "Invitation":
+      return <Invitation />;
     case "DataPoints":
       if (params.id) {
         return <DataPoints />;
@@ -59,7 +62,10 @@ const Pages: React.FC = () => {
 };
 
 const Page: React.FC = () => {
-  const { name, id } = useParams<{ name: string; id: string }>();
+  const { name, id } = useParams<{
+    name: string;
+    id: string;
+  }>();
   return (
     <IonPage>
       <IonHeader>

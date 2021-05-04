@@ -10,41 +10,124 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonCardContent,
+  IonRow,
+  IonCol,
+  IonChip,
+  IonBadge,
+  IonItem,
 } from "@ionic/react";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import "./Stats.css";
+import { projectsData } from "../data";
+import { textUtil, dateUtil } from "../data/utils";
 
-const doughnutData = {
-  labels: ["Target", "Submitted"],
-  datasets: [
-    {
-      label: "Submission",
-      data: [50, 16],
-      backgroundColor: ["#405da8", "#29b199"],
-      borderWidth: 0,
-    },
-  ],
-};
-
-const lineData = {
-  type: "line",
+const barData = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May"],
   datasets: [
     {
-      label: "ID: 76832x",
+      label: textUtil.shorten(projectsData.projects[0].name),
       data: [400, 300, 200, 500, 600],
-      borderColor: "#404da8",
-      backgroundColor: "#404da8",
+      backgroundColor: "#3880ff",
+      stack: "Finance",
+      pointStyle: "circle",
+      pointRadius: 2,
     },
     {
-      label: "ID: 92834c",
+      label: textUtil.shorten(projectsData.projects[1].name),
       data: [200, 300, 0, 100, 50],
-      borderColor: "#29b199",
-      backgroundColor: "#29b199",
+      backgroundColor: "#2dd36f",
+      stack: "Finance",
+      pointStyle: "circle",
+      pointRadius: 2,
+    },
+    {
+      label: textUtil.shorten(projectsData.projects[2].name),
+      data: [200, 300, 0, 100, 50],
+      backgroundColor: "#eb445a",
+      stack: "Finance",
+      pointStyle: "circle",
+      pointRadius: 2,
     },
   ],
 };
+const barOptions = {
+  scales: {
+    y: [
+      {
+        stacked: true,
+      },
+    ],
+    x: [
+      {
+        stacked: true,
+      },
+    ],
+  },
+  plugins: {
+    legend: {
+      position: "bottom",
+      labels: {
+        usePointStyle: true,
+      },
+    },
+  },
+};
 
+const summary = [
+  {
+    title: "Current Projects",
+    value: "3",
+    data: [
+      {
+        name: "Submitted",
+        value: "36 Datapoints",
+        color: "secondary",
+      },
+      {
+        name: "Targeted",
+        value: "80 Datapoints",
+        color: "success",
+      },
+      {
+        name: "Last Submission",
+        value: dateUtil.format("2021-05-01"),
+        color: "danger",
+      },
+    ],
+  },
+  {
+    title: "Completed Projects",
+    value: "5",
+    data: [
+      {
+        name: "Submitted",
+        value: "118 Datapoints",
+        color: "success",
+      },
+      {
+        name: "Targeted",
+        value: "120 Datapoints",
+        color: "danger",
+      },
+      {
+        name: "Earned",
+        value: "4000",
+        color: "success",
+      },
+    ],
+  },
+];
+
+const SummaryList = ({ data }) => {
+  return data.map((x, i) => (
+    <IonItem key={i}>
+      <IonCardSubtitle>{x.name}</IonCardSubtitle>
+      <IonBadge slot="end" color={x.color}>
+        {x.value}
+      </IonBadge>
+    </IonItem>
+  ));
+};
 export const Stats: React.FC = () => {
   return (
     <IonPage>
@@ -54,24 +137,39 @@ export const Stats: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>Submission</IonCardTitle>
-            <IonCardSubtitle>Target vs Submitted</IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <Doughnut data={doughnutData} type="DOESNOTMATTER" />
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>Finance</IonCardTitle>
-            <IonCardSubtitle>Projects Income</IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <Line data={lineData} type="DOESNOTMATTER" />
-          </IonCardContent>
-        </IonCard>
+        <IonRow>
+          {summary.map((x, i) => (
+            <IonCol key={i}>
+              <IonCard>
+                <IonItem>
+                  <IonCardTitle>{x.title}</IonCardTitle>
+                  <IonChip slot="start" outline={true} color="primary">
+                    <b>{x.value}</b>
+                  </IonChip>
+                </IonItem>
+                <SummaryList data={x.data} />
+              </IonCard>
+            </IonCol>
+          ))}
+        </IonRow>
+        <IonRow>
+          <IonCol>
+            <IonCard>
+              <IonCardHeader>
+                <IonCardTitle>Finance</IonCardTitle>
+                <IonCardSubtitle>Projects Income</IonCardSubtitle>
+              </IonCardHeader>
+              <IonCardContent>
+                <Bar
+                  data={barData}
+                  options={barOptions}
+                  type="DOESNOTMATTER"
+                  height={300}
+                />
+              </IonCardContent>
+            </IonCard>
+          </IonCol>
+        </IonRow>
       </IonContent>
     </IonPage>
   );
