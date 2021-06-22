@@ -15,6 +15,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "chart.js": "^3.2.1",
+    "d3-scale": "^3.3.0",
     "faker": "^5.5.3",
     "ionicons": "^5.4.0",
     "moment": "^2.29.1",

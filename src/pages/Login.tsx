@@ -12,7 +12,7 @@ import {
 import { Redirect } from "react-router-dom";
 import "./Login.css";
 
-const logo = require("../image/mdi-logo.png");
+const logo = require("../image/logo-mdi.png");
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("test@akvo.org");
@@ -30,9 +30,6 @@ const Login: React.FC = () => {
         <IonRow className="login">
           <div className="container-logo">
             <img src={logo.default} alt="mdi-logo" className="img-logo" />
-            <h1 id="logo">
-              MDI<small>Platform</small>
-            </h1>
           </div>
           <IonCol>
             <IonItem>

@@ -81,6 +81,22 @@ export const Account: React.FC = () => {
             ></IonInput>
           </IonItem>
         </IonItemGroup>
+        <IonItemDivider color="light">
+          <IonLabel>Language</IonLabel>
+        </IonItemDivider>
+        <IonItemGroup>
+          <IonItem>
+            <IonLabel position="stacked">Locale Language</IonLabel>
+            <IonSelect
+              value="english"
+              placeholder="Select One"
+              interface="action-sheet"
+            >
+              <IonSelectOption value="english">English</IonSelectOption>
+              <IonSelectOption value="france">Français</IonSelectOption>
+            </IonSelect>
+          </IonItem>
+        </IonItemGroup>
       </IonContent>
     </IonPage>
   );

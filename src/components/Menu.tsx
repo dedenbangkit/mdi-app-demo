@@ -8,6 +8,7 @@ import {
   IonMenu,
   IonMenuToggle,
   IonBadge,
+  IonImg,
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
@@ -73,16 +74,19 @@ const appPages: AppPage[] = [
   },
 ];
 
+const logo = require("../image/logo-mdi-02.png");
+
 const Menu: React.FC = () => {
   const location = useLocation();
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonListHeader>
-          <h1 id="logo-menu">
-            MDI<small>Platform</small>
-          </h1>
+          <img
+            src={logo.default}
+            alt="mdi-logo"
+            style={{ height: "30px", margin: "auto" }}
+          />
         </IonListHeader>
         <IonList id="inbox-list">
           {appPages.map((appPage, index) => {

@@ -15,16 +15,16 @@ import {
   IonSegment,
   IonSegmentButton,
 } from "@ionic/react";
-import { cash, mapSharp, calendar, idCardSharp } from "ionicons/icons";
+import { cash, mapSharp, calendar, listSharp } from "ionicons/icons";
 import { dateUtil } from "../data/utils";
 import { InvitationDetail } from "./InvitationDetail";
 import MapChart from "../components/Maps";
 
 const headerInfo = [
   {
-    value: "invitation",
-    label: "Invitation",
-    icon: idCardSharp,
+    value: "list",
+    label: "List",
+    icon: listSharp,
   },
   {
     value: "maps",
@@ -37,13 +37,13 @@ const InvitationList = ({ data, setShowModal }) => {
   return data.slice(0, 100).map((x, i) => (
     <IonCard key={i} onClick={(e) => setShowModal(x.id)}>
       <IonCardHeader>
-        <h4>{x.name}</h4>
+        <h4 style={{ fontSize: "16px" }}>{x.name}</h4>
       </IonCardHeader>
       <IonItem>
         <IonLabel>
           <IonBadge color="danger">
             <IonIcon icon={calendar} />
-            {dateUtil.up(x.startDate)} - {dateUtil.up(x.endDate)}
+            {dateUtil.up(x.startDate)}
           </IonBadge>
         </IonLabel>
         <IonLabel>
@@ -58,16 +58,24 @@ const InvitationList = ({ data, setShowModal }) => {
 };
 
 export const Invitation: React.FC = () => {
-  const [segment, setSegment] = useState("invitation");
+  const [segment, setSegment] = useState("list");
   const [data, setData] = useState<any[]>([]);
+  const [markers, setMarkers] = useState<any[]>([]);
   const [showModal, setShowModal] = useState<any>(false);
   useEffect(() => {
     if (data.length === 0) {
       fetch("/json/mali-project.json")
         .then((res) => res.json())
-        .then((data) => setData(data));
+        .then((data) => setData(data.splice(0, 20)));
     }
   }, [data]);
+  useEffect(() => {
+    if (markers.length === 0) {
+      fetch("/json/example-points.json")
+        .then((res) => res.json())
+        .then((data) => setMarkers(data.splice(40, 80)));
+    }
+  }, [markers]);
   return (
     <IonPage>
       <IonHeader>
@@ -96,10 +104,14 @@ export const Invitation: React.FC = () => {
             />
           )}
         </IonModal>
-        {segment === "invitation" ? (
+        {segment === "list" ? (
           <InvitationList data={data} setShowModal={setShowModal} />
         ) : (
-          <MapChart projects={data} setShowModal={setShowModal} />
+          <MapChart
+            projects={data}
+            setShowModal={setShowModal}
+            markers={markers}
+          />
         )}
       </IonContent>
     </IonPage>

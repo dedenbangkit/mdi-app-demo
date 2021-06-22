@@ -56,17 +56,17 @@ const Contents = ({ segment }): any => {
         header: "Action",
         buttons: [
           {
-            text: "Start Survey",
-            icon: clipboardOutline,
-            handler: () => {
-              console.log("Survey Clicked");
-            },
-          },
-          {
             text: "View Data",
             icon: barChartOutline,
             handler: () => {
               history.push(`/page/DataPoints/${x.id}`);
+            },
+          },
+          {
+            text: "Start Survey",
+            icon: clipboardOutline,
+            handler: () => {
+              console.log("Survey Clicked");
             },
           },
         ],
